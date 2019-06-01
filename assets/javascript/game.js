@@ -18,7 +18,7 @@ var currentwordtext = document.getElementById("currentword")
 var guessesremainingtext = document.getElementById("guessesremaining")
 var lettersguessedtext = document.getElementById("lettersguessed")
 
-function reset(){
+function reset() {
     lettersguessed = [];
     guessesremaining = 9;
     correctblanks = [];
@@ -35,7 +35,7 @@ function lgamesetup() {
 
     // stores/holds the amount of "length" as an integer
     blanks = lettersofword.length;
- 
+
     // creates a loop generating the amuount of blanks needed to fill
     for (var i = 0; i < blanks; i++) {
         // for each blank, it pushes a underscore
@@ -57,26 +57,37 @@ function checkLetters(letter) {
     var lettersinword = false;
 
     //if the generated randomword is equal to the letter entered... then variable is true
-    for (var i = 0; i < blanks; i++){
-        if(ranCharacter[i] == letter){
+    for (var i = 0; i < blanks; i++) {
+        if (ranCharacter[i] == letter) {
             lettersinword = true;
         }
     }
 
     // if true, the letter will remove blanks and replace
-    if(lettersinword){
-        for (var i = 0; i < blanks; i++){
-            if(ranCharacter[i] == letter){
+    if (lettersinword) {
+        for (var i = 0; i < blanks; i++) {
+            if (ranCharacter[i] == letter) {
                 correctblanks = letter;
             }
         }
         // the guess will go down and the guessed letter will be outputted
-    }else {
+    } else {
         guessesremaining--;
         lettersguessedtext.push(lettersguessed);
     }
     console.log(correctblanks);
-}    
+
+    // if statement to decide if we win or reset
+    function result() {
+        if (lettersofword.toString() == correctblanks.toString()) {
+            wins++;
+        } else {
+            reset();
+        }
+    }
+
+    
+}
 
 
 
