@@ -42,7 +42,7 @@ function lgamesetup() {
         correctblanks.push("_")
     }
     // prints out the blanks
-    currentword.innerHTML = " " + correctblanks.join(" ");
+    currentwordtext.innerHTML = " " + correctblanks.join(" ");
 
 
     //console logging to make sure it works
@@ -62,7 +62,7 @@ function checkLetters(letter) {
             lettersinword = true;
         }
     }
-    
+
     // if true, the letter will remove blanks and replace
     if(lettersinword){
         for (var i = 0; i < blanks; i++){
@@ -73,7 +73,7 @@ function checkLetters(letter) {
         // the guess will go down and the guessed letter will be outputted
     }else {
         guessesremaining--;
-        lettersguessed.push(lettersguessed);
+        lettersguessedtext.push(lettersguessed);
     }
     console.log(correctblanks);
 }    
