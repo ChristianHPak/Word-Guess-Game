@@ -1,9 +1,45 @@
 <!DOCTYPE html>
 <html>
-    <head>
 
-    </head>
-    <body>
-        <div></div>
-    </body>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="assets/javascript/game.js"></script>
+</head>
+<style>
+    body {
+        background-color: black;
+        color: white;
+        text-align: center;
+    }
+
+    img {
+        width: 400px;
+        height: 400px;
+    }
+</style>
+
+<body>
+    <h1>Nintendo Characters!</h1>
+    <div class="container border border-primary">
+        <div class="row">
+            <div class="col-md" style="border: dashed;">
+                <img src="../Basic-Portfolio/assets/images/wah.jpeg" alt="">
+            </div>
+            <div class="col-md " style="border: dashed;">
+                <h2>Press any key to get started!</ph2>
+                    <h2>wins: </h2>
+                    <p id="wins"></p>
+                    <h2>Current Word</h2>
+                    <p id="currentword">_ _ _ _ _</p>
+                    <h2>Number of Guesses Remaining</h2>
+                    <p id="guessesremaining">" "</p>
+                    <h2>Letters already guessed</h2>
+                    <p id="lettersguessed">" "</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
 </html>
