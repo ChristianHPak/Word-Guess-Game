@@ -26,7 +26,7 @@ function reset() {
 }
 
 // game start function
-function lgamesetup() {
+function gamesetup() {
     // chooses a character
     var ranCharacter = characters(Math.floor(Math.random() * characters.length));
 
@@ -42,7 +42,7 @@ function lgamesetup() {
         correctblanks.push("_")
     }
     // prints out the blanks
-    currentwordtext.innerHTML = " " + correctblanks.join(" ");
+    currentwordtext.textContent = correctblanks.join(" ");
 
 
     //console logging to make sure it works
@@ -75,21 +75,32 @@ function checkLetters(letter) {
         guessesremaining--;
         lettersguessedtext.push(lettersguessed);
     }
+
     console.log(correctblanks);
 
     // if statement to decide if we win or reset
     function result() {
         if (lettersofword.toString() == correctblanks.toString()) {
             wins++;
+            reset();
         } else {
             reset();
         }
     }
 
-    
+    // starts the game without changing word
+    gamesetup();
+
+    // function is run everytime a key is pressed
+    document.onkeyup = function (event) {
+        var userPress = event.key.toLowerCase();
+
+        //checks to see if input matches a letter from the ranNumber
+        checkLetters(userPress);
+
+        // decides if you win or not
+        result();
+    }
+    // every press results in either a 
+    lettersguessedtext.textContent = lettersguessed.join(" ");
 }
-
-
-
-
-// // audio and pictures
