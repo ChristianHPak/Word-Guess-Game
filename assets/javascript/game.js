@@ -18,8 +18,11 @@ var currentwordtext = document.getElementById("currentword")
 var guessesremainingtext = document.getElementById("guessesremaining")
 var lettersguessedtext = document.getElementById("lettersguessed")
 
+gamesetup();
+
 // game start function
 function gamesetup() {
+    
     // chooses a character
     ranCharacter = characters[Math.floor(Math.random() * characters.length)];
 
@@ -36,7 +39,7 @@ function gamesetup() {
     }
 
     // prints out the blanks
-    currentwordtext.textContent = " " + correctblanks.join(" ");
+    currentwordtext.textContent = " " + correctblanks.join(" ")
 }
 
 function reset() {
@@ -47,30 +50,29 @@ function reset() {
 }
 
 //IfElse, to see if letter selected matches random word
-function checkLetters(letter) {
-    var lettersinword = false;
+// function checkLetters(letter) {
+//     var lettersinword = false;
 
-    //if the generated randomword is equal to the letter entered... then variable is true
-    for (var i = 0; i < blanks; i++) {
-        if (ranCharacter[i] == letter) {
-            lettersinword = true;
-        }
-    }
+//     //if the generated randomword is equal to the letter entered... then variable is true
+//     for (var i = 0; i < blanks; i++) {
+//         if (ranCharacter[i] == letter) {
+//             lettersinword = true;
+//         }
+//     }
 
-    // if true, the letter will remove blanks and replace
-    if (lettersinword) {
-        for (var i = 0; i < blanks; i++) {
-            if (ranCharacter[i] == letter) {
-                correctblanks = letter;
-            }
-        }
-        // the guess will go down and the guessed letter will be outputted
-    } else {
-        guessesremaining--;
-        lettersguessedtext.push(lettersguessed);
-
-    }
-}
+//     // if true, the letter will remove blanks and replace
+//     if (lettersinword) {
+//         for (var i = 0; i < blanks; i++) {
+//             if (ranCharacter[i] == letter) {
+//                 correctblanks = letter;
+//             }
+//         }
+//         // the guess will go down and the guessed letter will be outputted
+//     } else {
+//         guessesremaining--;
+//         lettersguessedtext.push(lettersguessed);
+//     }
+// }
 
 // if statement to decide if we win or reset
 function result() {
@@ -82,18 +84,36 @@ function result() {
     }
 }
 
-// starts the game without changing word
-gamesetup();
 
 // function is run everytime a key is pressed
 document.onkeyup = function (event) {
     var userPress = event.key.toLowerCase();
     console.log(userPress);
     //checks to see if input matches a letter from the ranNumber
-    checkLetters(userPress);
+    var lettersinword = false;
+
+    //if the generated randomword is equal to the letter entered... then variable is true
+    for (var i = 0; i < blanks; i++) {
+        if (ranCharacter[i] == userPress) {
+            lettersinword = true;
+        }
+    }
+
+    // if true, the letter will remove blanks and replace
+    if (lettersinword) {
+        for (var i = 0; i < blanks; i++) {
+            if (ranCharacter[i] == userPress) {
+                correctblanks = userPress;
+            }
+        }
+        // the guess will go down and the guessed letter will be outputted
+    } else {
+        guessesremaining--;
+        lettersguessedtext.push(lettersguessed);
+    }
 
     // decides if you win or not
     result();
-    // every press results in either a guessed letter or a letter
-    lettersguessedtext.textContent = " " + lettersguessed.join(" ");
 }
+// every press results in either a guessed letter or a letter
+lettersguessedtext.textContent = " " + lettersguessed.join(" ");
